@@ -1,0 +1,65 @@
+.service-item {
+  background-color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.miniTitle {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.spinner {
+  margin-top: 2rem;
+}
+
+.services {
+  background-color: #f9fafb;
+  padding: 2rem 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Dropdown transition styles */
+.dropdown-enter {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.dropdown-enter-active {
+  max-height: 1000px; /* Adjust to a value that is sufficient for your content */
+  opacity: 1;
+}
+
+.dropdown-exit {
+  max-height: 1000px; /* Adjust to a value that is sufficient for your content */
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.dropdown-exit-active {
+  max-height: 0;
+  opacity: 0;
+}
