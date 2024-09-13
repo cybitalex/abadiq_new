@@ -16,6 +16,5 @@ export const usefulLink = [
 
 export const footerInfo = [
     {icon: faBuffer, info1: 'ABADIQ Medical Billing', id: 1},
-    {icon: faMobileAlt, info1: '+19296396119', info2: 'info@abadiq.com', id: 2},
-    {icon: faMapMarkedAlt, info1: 'North Carolina', info2: 'USA', id: 3}
+    {icon: faMobileAlt, info1: '+18002293302', info2: 'info@abadiq.com', id: 2},
 ];
