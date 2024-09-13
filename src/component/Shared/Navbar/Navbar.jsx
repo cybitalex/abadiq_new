@@ -10,6 +10,7 @@ import { useAppContext } from '../../../context';
 const NavBar = () => {
     const { state: { user } } = useAppContext();
     const [isSticky, setSticky] = useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -23,27 +24,42 @@ const NavBar = () => {
 
     const scrollTop = () => window['scrollTo']({ top: 0, behavior: 'smooth' });
     
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        if (section) {
+            const sectionTop = section.offsetTop - navbarHeight;
+            window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+        }
+        setExpanded(false); // Close the menu after clicking
+    };
+
     return (
-        <Navbar className={`navbar navbar-expand-lg navbar-light ${isSticky ? "navStyle" : "navDefault"}`} expand="lg">
+        <Navbar 
+            expanded={expanded}
+            onToggle={(expanded) => setExpanded(expanded)}
+            className={`navbar navbar-expand-lg navbar-light ${isSticky ? "navStyle" : "navDefault"}`} 
+            expand="lg"
+        >
             <Container>
-                <Navbar.Brand as={Link} to="/" onClick={scrollTop} className="navBrn">
+                <Navbar.Brand as={Link} to="/" onClick={() => { scrollTop(); setExpanded(false); }} className="navBrn">
                     <img src={logo} alt="ABADIQ Logo" className="logo" /> ABADIQ <span className="navHighlight">Medical Billing</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto mainNav" activeKey="/home">
                         <Nav.Item>
-                            <Nav.Link as={Link} to="/" className="nav-link" onClick={() => window['scrollTo']({ top: 0, behavior: 'smooth' })}>Home</Nav.Link>
+                            <Nav.Link as={Link} to="/" className="nav-link" onClick={() => { scrollTop(); setExpanded(false); }}>Home</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="#services" className="nav-link">Services</Nav.Link>
+                            <Nav.Link onClick={() => scrollToSection('services')} className="nav-link">Services</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="#contact" className="nav-link">Contact</Nav.Link>
+                            <Nav.Link onClick={() => scrollToSection('contact')} className="nav-link">Contact</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link as={Link} to="/dashboard/profile" className="nav-link">Dashboard</Nav.Link>
-                        </Nav.Item>
+                        {/* <Nav.Item>
+                            <Nav.Link as={Link} to="/dashboard/profile" className="nav-link" onClick={() => setExpanded(false)}>Dashboard</Nav.Link>
+                        </Nav.Item> */}
                         <Nav.Item>
                             {
                                     <div>
