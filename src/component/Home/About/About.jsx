@@ -16,8 +16,9 @@ const About = () => {
                         <Fade duration={2000} right>
                             <p className="miniTitle">about us</p>
                             <h1 className="headerTitle">HOW WE CAN HELP YOUR <span className="headerHighlight">MEDICAL BUSINESS</span> GROW</h1>
-                            <p className="headerContent">Adding medicalically convincing content here</p>
-                            <button className="branBtn">learn More</button>
+                            <p className="headerContent">
+                            Abad IQ is a trailblazing leader in modern medical billing services, dedicated to revolutionizing the financial health of healthcare providers. We bring a synergy of cutting-edge technology, expert professionals, and unmatched commitment to every aspect of the billing journey. Our mission? To optimize revenue cycles seamlessly, ensuring providers focus on patient care while we drive financial success.
+                            </p>
                         </Fade>
                     </div>
                 </div>

@@ -6,10 +6,28 @@ import contactImg from '../../../Assets/contact.svg';
 import Fade from 'react-reveal/Fade';
 
 const Contact = () => {
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        event.target.reset();
-        // swal("Thank You!", "We appreciate you contacting us!", "success");
+        const formData = new FormData(event.target);
+        
+        try {
+            const response = await fetch('http://localhost:3001/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(Object.fromEntries(formData)),
+            });
+            
+            if (response.ok) {
+                event.target.reset();
+                // Show success message
+            } else {
+                // Handle error
+            }
+        } catch (error) {
+            // Handle network error
+        }
     }
     return (
         <section id="contact">

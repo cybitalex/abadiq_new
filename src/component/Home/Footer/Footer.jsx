@@ -22,8 +22,8 @@ const Footer = () => {
                 <Col md={6} lg={3} className="fAboutUs">
                     <h5>ABOUT US</h5>
                     <span className="animate-border"></span>
-                    <p className="aboutUsDes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, voluptate quod facere quas rem quaerat.</p>
-                    <ul className="socialIcons">
+                    <p className="aboutUsDes">Abad IQ stands as a beacon of excellence in medical billing, passionately committed to elevating the financial health of healthcare providers. With every claim meticulously coded, every denial strategically managed, and every invoice transparently communicated, we redefine medical billing as an art of precision and a science of success.</p>
+                    {/* <ul className="socialIcons">
                         <li>
                             <Link onClick={scrollUP} to="/" >
                                 <FontAwesomeIcon icon={faFacebook}/>
@@ -44,10 +44,10 @@ const Footer = () => {
                                 <FontAwesomeIcon icon={faLinkedinIn}/>
                             </Link>
                         </li>
-                    </ul>
+                    </ul> */}
                 </Col>
             </Row>
-            <p className="copyRight">Copyright &copy; 2021 <span className="fHighlight">Ujjal zaman</span>. All rights reserved.</p>
+            <p className="copyRight">Copyright &copy; 2024 <span className="fHighlight">CyBit Networks</span>. All rights reserved.</p>
         </section>
     );
 };
