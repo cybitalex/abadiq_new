@@ -27,20 +27,32 @@ const Hero = () => {
                         >
                             Medical Billing{' '} <br />
                             The Best {' '}
-                            <Typography
-                                color={'primary'}
-                                component={'span'}
-                                variant={'inherit'}
+                            <Box
+                                component="span"
                                 sx={{
-                                    background: `linear-gradient(180deg, transparent 82%, ${alpha(theme.palette.secondary.main, 0.3)} 0%)`,
+                                    display: 'inline-block',
+                                    width: '110px', // Adjust this to fit "Coding" comfortably
+                                    height: '1.2em', // Adjust this to match your line height
                                 }}
                             >
-                                <Typed
-                                    strings={['Billing', 'Coding', 'RCM']}
-                                    typeSpeed={100}
-                                    loop={true}
-                                />
-                            </Typography>
+                                <Typography
+                                    color={'primary'}
+                                    component={'span'}
+                                    variant={'inherit'}
+                                    sx={{
+                                        background: `linear-gradient(180deg, transparent 82%, ${alpha(theme.palette.secondary.main, 0.3)} 0%)`,
+                                        display: 'inline-block',
+                                        width: '100%',
+                                        textAlign: 'center', // Center the text within the box
+                                    }}
+                                >
+                                    <Typed
+                                        strings={['Billing', 'Coding', 'RCM']}
+                                        typeSpeed={100}
+                                        loop={true}
+                                    />
+                                </Typography>
+                            </Box>
                             Services.
                         </Typography>
                     </Box>
