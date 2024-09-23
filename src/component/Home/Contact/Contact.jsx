@@ -9,26 +9,42 @@ const Contact = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
+        const formDataObj = Object.fromEntries(formData);
+
+        const emailData = {
+            to: [{
+                email: 'abby@abadiq.com', // Your receiving email
+                name: 'Abby Abad',
+            }],
+            sender: {
+                email: formDataObj['email'], // Sender's email from form
+                name: formDataObj['name'], // Sender's name from form
+            },
+            subject: formDataObj['subject'],
+            htmlContent: `<p>${formDataObj['message']}</p>`,
+        };
         
         try {
-            const response = await fetch('http://localhost:3001/api/contact', {
+            const response = await fetch('https://api.brevo.com/v3/smtp/email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'api-key': process.env.REACT_APP_BREVO_API_KEY,
                 },
-                body: JSON.stringify(Object.fromEntries(formData)),
+                body: JSON.stringify(emailData),
             });
-            
+
             if (response.ok) {
                 event.target.reset();
-                // Show success message
+                alert('Message sent successfully!');
             } else {
-                // Handle error
+                alert('Failed to send message.');
             }
         } catch (error) {
-            // Handle network error
+            alert('An error occurred. Please try again later.');
         }
-    }
+    };
+
     return (
         <section id="contact">
             <Col md={11} className="mx-auto">
@@ -40,16 +56,16 @@ const Contact = () => {
                                 <h5 className="sectionTitle">GET IN TOUCH</h5>
                                 <Row>
                                     <Col md={12} lg={6}>
-                                        <input placeholder="Your Name" type="text" required/>
+                                        <input name="name" placeholder="Your Name" type="text" required />
                                     </Col>
                                     <Col md={12} lg={6}>
-                                        <input placeholder="Your Email" type="email" required/>
+                                        <input name="email" placeholder="Your Email" type="email" required />
                                     </Col>
                                     <Col md={12}>
-                                        <input placeholder="Subject" type="text" required/>
+                                        <input name="subject" placeholder="Subject" type="text" required />
                                     </Col>
                                     <Col md={12}>
-                                        <textarea placeholder="Your Message..." required></textarea>
+                                        <textarea name="message" placeholder="Your Message..." required></textarea>
                                     </Col>
                                 </Row>
                                 <button className="branBtn" type="submit">Submit Now</button>
@@ -58,7 +74,7 @@ const Contact = () => {
                     </Col>
                     <Col md={6}>
                         <Fade duration={2000} right>
-                            <img src={`${contactImg}`} alt="" className="img-fluid"/>
+                            <img src={contactImg} alt="Contact Us" className="img-fluid" />
                         </Fade>
                     </Col>
                 </Row>
