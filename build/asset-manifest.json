@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/static/css/main.db75814c.chunk.css",
-    "main.js": "/static/js/main.66773634.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.3f4d55b8.js",
-    "static/css/2.51f86f73.chunk.css": "/static/css/2.51f86f73.chunk.css",
-    "static/js/2.b9a1ed4f.chunk.js": "/static/js/2.b9a1ed4f.chunk.js",
-    "static/js/3.f656b425.chunk.js": "/static/js/3.f656b425.chunk.js",
+    "main.css": "/static/css/main.7932d4af.css",
+    "main.js": "/static/js/main.d2707379.js",
+    "runtime-main.js": "/static/js/runtime-main.d57c9cd8.js",
+    "static/js/142.269bd783.chunk.js": "/static/js/142.269bd783.chunk.js",
+    "static/css/890.8d46056a.css": "/static/css/890.8d46056a.css",
+    "static/js/890.ddc5ff7a.js": "/static/js/890.ddc5ff7a.js",
+    "static/media/medical_billing.png": "/static/media/medical_billing.ba38f37c.png",
+    "static/media/bg.png": "/static/media/bg.431db87d.png",
+    "static/media/about.svg": "/static/media/about.5342ef52.svg",
+    "static/media/abadiqlogo.png": "/static/media/abadiqlogo.c96f5d52.png",
+    "static/media/log.svg": "/static/media/log.4715ac4b.svg",
+    "static/media/register.svg": "/static/media/register.c806b081.svg",
+    "static/media/404.svg": "/static/media/404.4861ae77.svg",
+    "static/media/footerbg.png": "/static/media/footerbg.23fa6ea0.png",
+    "static/media/contact.svg": "/static/media/contact.ea900458.svg",
     "index.html": "/index.html",
-    "static/js/2.b9a1ed4f.chunk.js.LICENSE.txt": "/static/js/2.b9a1ed4f.chunk.js.LICENSE.txt",
-    "static/media/404.4861ae77.svg": "/static/media/404.4861ae77.svg",
-    "static/media/abadiqlogo.c96f5d52.png": "/static/media/abadiqlogo.c96f5d52.png",
-    "static/media/about.5342ef52.svg": "/static/media/about.5342ef52.svg",
-    "static/media/Header.css": "/static/media/bg.431db87d.png",
-    "static/media/contact.ea900458.svg": "/static/media/contact.ea900458.svg",
-    "static/media/Footer.css": "/static/media/footerbg.23fa6ea0.png",
-    "static/media/info.45b0516e.svg": "/static/media/info.45b0516e.svg",
-    "static/media/log.4715ac4b.svg": "/static/media/log.4715ac4b.svg",
-    "static/media/medical_billing.ba38f37c.png": "/static/media/medical_billing.ba38f37c.png",
-    "static/media/register.c806b081.svg": "/static/media/register.c806b081.svg",
-    "static/media/user.4a2ab139.svg": "/static/media/user.4a2ab139.svg"
+    "static/media/info.svg": "/static/media/info.45b0516e.svg",
+    "static/media/user.svg": "/static/media/user.4a2ab139.svg",
+    "static/media/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;": "/static/media/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;.1feff74f.bin"
   },
   "entrypoints": [
-    "static/js/runtime-main.3f4d55b8.js",
-    "static/css/2.51f86f73.chunk.css",
-    "static/js/2.b9a1ed4f.chunk.js",
-    "static/css/main.db75814c.chunk.css",
-    "static/js/main.66773634.chunk.js"
+    "static/js/runtime-main.d57c9cd8.js",
+    "static/css/890.8d46056a.css",
+    "static/js/890.ddc5ff7a.js",
+    "static/css/main.7932d4af.css",
+    "static/js/main.d2707379.js"
   ]
 }
