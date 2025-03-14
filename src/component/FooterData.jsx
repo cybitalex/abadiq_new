@@ -1,11 +1,11 @@
-import { faMobileAlt, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
-import { faBuffer } from '@fortawesome/free-brands-svg-icons'
+import { faMobileAlt, faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
+import { faBuffer } from "@fortawesome/free-brands-svg-icons";
 
 export const usefulLink = [
-    {name: 'Home', id: 1},
-    {name: 'About us', id: 2},
-    {name: 'Services', id: 3},
-]
+  { name: "Home", id: 1 },
+  { name: "About us", id: 2 },
+  { name: "Services", id: 3 },
+];
 // export const ourServices = [
 //     {name: 'Strategy & Research', id: 6},
 //     {name: 'Web Design', id: 7},
@@ -15,6 +15,6 @@ export const usefulLink = [
 // ]
 
 export const footerInfo = [
-    {icon: faBuffer, info1: 'ABADIQ Medical Billing', id: 1},
-    {icon: faMobileAlt, info1: '+18002293302', info2: 'info@abadiq.com', id: 2},
+  { icon: faBuffer, info1: "ABADIQ Medical Billing", id: 1 },
+  { icon: faMobileAlt, info1: "718-208-4434", info2: "info@abadiq.com", id: 2 },
 ];

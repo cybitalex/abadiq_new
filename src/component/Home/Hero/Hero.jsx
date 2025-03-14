@@ -30,7 +30,7 @@ const Hero = () => {
               color="text.primary"
               sx={{
                 fontWeight: 700,
-                fontSize: { xs: "2rem", md: "2.5rem" },
+                fontSize: { xs: "2.2rem", md: "2.8rem" },
               }}
             >
               Medical Billing <br />
@@ -39,7 +39,7 @@ const Hero = () => {
                 component="span"
                 sx={{
                   display: "inline-block",
-                  width: "110px",
+                  width: "130px",
                   height: "1.2em",
                 }}
               >
@@ -73,13 +73,28 @@ const Hero = () => {
               component="p"
               color="text.secondary"
               sx={{
-                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                fontSize: { xs: "1.2rem", md: "1.35rem" },
                 maxWidth: "600px",
+                lineHeight: 1.6,
               }}
             >
               Transform your healthcare practice with our comprehensive medical
               billing solutions. Expert service, maximum reimbursement, minimal
               stress.
+            </Typography>
+          </Box>
+          <Box>
+            <Typography
+              variant="h3"
+              component="p"
+              color="primary"
+              sx={{
+                fontSize: { xs: "1.3rem", md: "1.5rem" },
+                fontWeight: 600,
+                marginTop: 2,
+              }}
+            >
+              Call us: 718-208-4434
             </Typography>
           </Box>
         </Box>
@@ -105,9 +120,10 @@ const Hero = () => {
           loading="lazy"
           boxShadow={3}
           borderRadius={2}
-          maxWidth={600}
+          maxWidth={700}
           sx={{
             filter: theme.palette.mode === "dark" ? "brightness(0.7)" : "none",
+            transform: "scale(1.1)",
           }}
         />
       </Grid>
