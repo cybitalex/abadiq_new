@@ -5,7 +5,6 @@ import newImage from "../../../Assets/medical_billing.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typed from "react-typed";
 

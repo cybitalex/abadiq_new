@@ -1,13 +1,30 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
-const { google } = require('googleapis');
+const express = require("express");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
+const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  if (err instanceof URIError) {
+    return res.status(400).json({
+      error: "Bad Request - Invalid URL",
+    });
+  }
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    error: "Internal Server Error",
+  });
+});
 
 // Create OAuth2 client
 const oauth2Client = new OAuth2(
@@ -17,7 +34,7 @@ const oauth2Client = new OAuth2(
 );
 
 oauth2Client.setCredentials({
-  refresh_token: process.env.OAUTH_REFRESH_TOKEN
+  refresh_token: process.env.OAUTH_REFRESH_TOKEN,
 });
 
 async function createTransporter() {
@@ -25,54 +42,54 @@ async function createTransporter() {
     const accessToken = await new Promise((resolve, reject) => {
       oauth2Client.getAccessToken((err, token) => {
         if (err) {
-          console.log('Error in getAccessToken:', err);
+          console.log("Error in getAccessToken:", err);
           reject("Failed to create access token :(");
         }
         resolve(token);
       });
     });
 
-    console.log('Access token created successfully');
+    console.log("Access token created successfully");
 
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      host: "smtp.gmail.com",
       port: 465,
       secure: true,
       auth: {
-        type: 'OAuth2',
+        type: "OAuth2",
         user: process.env.EMAIL,
         clientId: process.env.OAUTH_CLIENT_ID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET,
         refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-        accessToken: accessToken
-      }
+        accessToken: accessToken,
+      },
     });
 
     return transporter;
   } catch (error) {
-    console.log('Error in createTransporter:', error);
+    console.log("Error in createTransporter:", error);
     throw error;
   }
 }
 
-app.post('/api/contact', async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   try {
     const transporter = await createTransporter();
     const { name, email, subject, message } = req.body;
 
     const mailOptions = {
       from: process.env.EMAIL,
-      to: 'alex@cybitnetworks.com',
+      to: "alex@cybitnetworks.com",
       subject: `New contact from ${name}: ${subject}`,
-      text: `From: ${name} (${email})\n\n${message}`
+      text: `From: ${name} (${email})\n\n${message}`,
     };
 
     const result = await transporter.sendMail(mailOptions);
-    console.log('Email sent: ' + result.response);
-    res.status(200).send('Email sent successfully');
+    console.log("Email sent: " + result.response);
+    res.status(200).send("Email sent successfully");
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error sending email');
+    res.status(500).send("Error sending email");
   }
 });
 
