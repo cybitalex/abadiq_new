@@ -53,8 +53,8 @@ const NavBar = () => {
           className="navBrn"
         >
           <img src={logo} alt="ABADIQ Logo" className="logo" />
-          <div>
-            ABADIQ
+          <div className="brand-text-container">
+            <span className="brand-name">ABADIQ</span>
             <span className="company-text">Medical Billing Company</span>
           </div>
         </Navbar.Brand>

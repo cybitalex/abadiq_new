@@ -37,11 +37,13 @@
 
 .navBrn {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.2;
+  align-items: center;
+  line-height: 1.4;
+  text-align: center;
+  padding: 0.5rem 0;
 }
 .brnIcon,
 .navHighlight {
@@ -83,17 +85,46 @@
   .navStyle {
     text-align: center;
   }
+  .logo {
+    height: 70px;
+    margin-bottom: 0.6rem;
+  }
+
+  .navBrn {
+    font-size: 1.6rem;
+  }
+
+  .company-text {
+    font-size: 0.9rem;
+  }
 }
 .logo {
-  height: 60px; /* Increased from 40px */
-  width: auto; /* Maintain the aspect ratio */
-  vertical-align: middle; /* Align the logo vertically with the text */
+  height: 80px; /* Increased size */
+  width: auto;
+  margin-bottom: 0.8rem; /* Space between logo and text */
+  transition: transform 0.3s ease;
+}
+
+.navBrn:hover .logo {
+  transform: scale(1.05);
+}
+
+.brand-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem; /* Space between ABADIQ and Medical Billing Company */
+}
+
+.brand-name {
+  color: #000;
+  letter-spacing: 0.5px;
 }
 
 .company-text {
   display: block;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #472583;
-  margin-top: -5px;
   font-weight: 500;
+  letter-spacing: 0.3px;
 }
