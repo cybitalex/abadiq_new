@@ -52,8 +52,11 @@ const NavBar = () => {
           }}
           className="navBrn"
         >
-          <img src={logo} alt="ABADIQ Logo" className="logo" /> ABADIQ{" "}
-          <span className="navHighlight">Medical Billing</span>
+          <img src={logo} alt="ABADIQ Logo" className="logo" />
+          <div>
+            ABADIQ
+            <span className="company-text">Medical Billing Company</span>
+          </div>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
