@@ -14,14 +14,14 @@ services:
   # Backend API service
   api:
     build:
-      context: ./api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: api/Dockerfile
     container_name: abadiq-api
     restart: unless-stopped
     env_file:
       - .env
     volumes:
-      - ./api:/app
+      - .:/app
       - /app/node_modules
     networks:
       - app-network

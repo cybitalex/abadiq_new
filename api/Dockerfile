@@ -2,12 +2,11 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files and install dependencies
-COPY package*.json ./
-RUN npm install
-
-# Copy the rest of the application code
+# Copy the entire application
 COPY . .
+
+# Install dependencies
+RUN npm install --legacy-peer-deps
 
 # Expose the port the app will run on
 EXPOSE 3001

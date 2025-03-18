@@ -46,8 +46,14 @@ docker-compose run --rm --entrypoint "\
     --no-eff-email \
     -d ${domains[0]} -d ${domains[1]}" certbot
 
-# Restart nginx
-echo "Restarting nginx with new certificates..."
-docker-compose exec nginx nginx -s reload
+# Check if nginx is running before trying to reload
+echo "Checking nginx and reloading configuration..."
+if docker-compose ps | grep -q "nginx.*Up"; then
+  docker-compose exec nginx nginx -s reload
+  echo "Nginx reloaded successfully."
+else
+  echo "Warning: Nginx service is not running. Certificates were obtained but not loaded."
+  echo "You'll need to start the services with 'docker-compose up -d' to use the certificates."
+fi
 
 echo "SSL setup completed!" 
