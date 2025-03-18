@@ -15,13 +15,23 @@ const Hero = () => {
     defaultMatches: true,
   });
   return (
-    <Grid container spacing={2} component="main" role="main">
+    <Grid
+      container
+      spacing={2}
+      component="main"
+      role="main"
+      sx={{
+        mt: { xs: -1, md: -2 }, // Negative margin to reduce space from top
+        px: { xs: 2, md: 4 }, // Add horizontal padding
+      }}
+    >
       <Grid item container xs={12} md={6} alignItems={"center"}>
         <Box
           data-aos={isMd ? "fade-right" : "fade-up"}
-          paddingLeft={isMd && 2}
-          p={0}
+          paddingLeft={isMd ? 1 : 2}
+          paddingRight={isMd ? 1 : 2}
           component="header"
+          sx={{ width: "100%" }}
         >
           <Box marginBottom={1}>
             <Typography
