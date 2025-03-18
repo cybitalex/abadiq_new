@@ -30,6 +30,49 @@ if [ ! -f .env ]; then
   read -p "Press Enter to continue after editing .env..."
 fi
 
+# Check if custom-build.js exists and is executable
+if [ ! -f custom-build.js ]; then
+  echo "⚠️ Creating custom build script to fix webpack issues..."
+  cat > custom-build.js << 'EOF'
+#!/usr/bin/env node
+
+/**
+ * Custom build script that patches the react-dev-utils/formatWebpackMessages module
+ * to fix the TypeError: message.split is not a function error
+ */
+
+// Path to the formatWebpackMessages.js file
+const formatFilePath = require.resolve('react-dev-utils/formatWebpackMessages');
+
+// Get the original formatWebpackMessages module
+const originalFormatWebpackMessages = require(formatFilePath);
+
+// Monkey patch the formatMessage function
+const fs = require('fs');
+const path = require('path');
+const fileContent = fs.readFileSync(formatFilePath, 'utf8');
+
+// Apply patch only if it hasn't been applied yet
+if (fileContent.includes('let lines = message.split')) {
+  console.log('📝 Patching formatWebpackMessages.js to fix TypeError...');
+  
+  const patchedContent = fileContent.replace(
+    'let lines = message.split(\'\\n\');',
+    'let lines = [];\nif (typeof message === \'string\') {\n  lines = message.split(\'\\n\');\n}'
+  );
+  
+  fs.writeFileSync(formatFilePath, patchedContent, 'utf8');
+  console.log('✅ Patch applied successfully!');
+}
+
+// Run the original build script
+console.log('🏗️ Starting build process...');
+require('../scripts/build');
+EOF
+  chmod +x custom-build.js
+  echo "✅ Custom build script created!"
+fi
+
 # Check if nginx directory has required configuration files
 if [ ! -f nginx/default.conf ] || [ ! -f nginx/ssl-proxy.conf ]; then
   echo "⚠️ Nginx configuration files missing. Creating them..."
@@ -120,6 +163,51 @@ chmod +x init-letsencrypt.sh
 
 # Initialize SSL certificates
 ./init-letsencrypt.sh
+
+# Check if Dockerfile.custom exists
+if [ ! -f Dockerfile.custom ]; then
+  echo "⚠️ Creating custom Dockerfile to fix build issues..."
+  cat > Dockerfile.custom << 'EOF'
+# Build stage
+FROM node:16-alpine as build
+
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install --legacy-peer-deps
+
+# Copy the custom build script and make it executable
+COPY custom-build.js ./
+RUN chmod +x custom-build.js
+
+# Copy the rest of the application code
+COPY . .
+
+# Set environment variables for build
+ENV GENERATE_SOURCEMAP=false
+ENV NODE_ENV=production
+ENV CI=false
+
+# Use the custom build script instead of npm run build
+RUN node custom-build.js
+
+# Production stage
+FROM nginx:alpine
+
+# Copy built files from build stage
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Copy custom nginx config
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+EOF
+  echo "✅ Custom Dockerfile created!"
+fi
 
 # Build and start containers
 echo "🐳 Building and starting Docker containers..."

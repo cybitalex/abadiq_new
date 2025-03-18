@@ -1,0 +1,16 @@
+--- formatWebpackMessages.js.orig	2023-06-01 12:00:00.000000000 +0000
++++ formatWebpackMessages.js	2023-06-01 12:01:00.000000000 +0000
+@@ -15,7 +15,11 @@
+ // This is quite hacky and I don't like it.
+ // It's really hard to get fatal errors from Webpack.
+ function formatMessage(message) {
+-  let lines = message.split('\n');
++  // Check if message is a string before calling split
++  let lines = [];
++  if (typeof message === 'string') {
++    lines = message.split('\n');
++  }
+ 
+   // Strip webpack-added headers off errors/warnings
+   // https://github.com/webpack/webpack/blob/master/lib/ModuleError.js
+ } 

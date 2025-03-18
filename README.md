@@ -14,6 +14,8 @@ Modern Medical Billing Application using React, Express, and Docker.
 
 #### Option 1: Using the Automated Script (Recommended)
 
+The deployment script will automatically set up everything including the necessary patches for webpack build issues:
+
 ```bash
 # Make the script executable
 chmod +x deploy.sh
@@ -30,10 +32,15 @@ chmod +x deploy.sh
    cp .env.example .env
    # Edit .env with your actual values
    ```
-3. Create necessary directories:
+3. Create necessary directories and files:
+
    ```bash
    mkdir -p nginx certbot/conf certbot/www api
+
+   # Create a patch for webpack build issues
+   chmod +x custom-build.js
    ```
+
 4. Run SSL setup script:
    ```bash
    chmod +x init-letsencrypt.sh
@@ -51,6 +58,14 @@ chmod +x deploy.sh
 - **API Server**: Express.js backend
 - **Nginx SSL Proxy**: SSL termination and request routing
 - **Certbot**: Automatic SSL certificate renewal
+
+## Webpack Build Fix
+
+This project includes a custom solution for the common webpack error: `TypeError: message.split is not a function`. We've implemented:
+
+1. A custom build script (`custom-build.js`) that patches the react-dev-utils module at runtime
+2. A custom Dockerfile that uses this script instead of the standard npm build command
+3. Updated docker-compose.yml to use this custom Dockerfile
 
 ## Important Links
 

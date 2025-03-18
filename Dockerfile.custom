@@ -3,16 +3,13 @@ FROM node:16-alpine as build
 
 WORKDIR /app
 
-# Install patch utility
-RUN apk add --no-cache patch
-
 # Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
 
-# Copy patch file and apply it
-COPY react-dev-utils.patch ./
-RUN patch -p0 node_modules/react-dev-utils/formatWebpackMessages.js < react-dev-utils.patch
+# Copy the custom build script and make it executable
+COPY custom-build.js ./
+RUN chmod +x custom-build.js
 
 # Copy the rest of the application code
 COPY . .
@@ -22,8 +19,8 @@ ENV GENERATE_SOURCEMAP=false
 ENV NODE_ENV=production
 ENV CI=false
 
-# Build the app
-RUN npm run build
+# Use the custom build script instead of npm run build
+RUN node custom-build.js
 
 # Production stage
 FROM nginx:alpine
