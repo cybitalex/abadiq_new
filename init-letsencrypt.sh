@@ -37,6 +37,11 @@ docker-compose up --force-recreate -d nginx
 echo "Waiting for nginx to start..."
 sleep 5
 
+# Note about port forwarding for Let's Encrypt validation
+echo "⚠️ IMPORTANT: For Let's Encrypt validation to work, make sure that:"
+echo "  - Port 8080 on your server is forwarded to port 80 for Let's Encrypt HTTP validation"
+echo "  - OR your existing Nginx is configured to proxy requests for /.well-known/acme-challenge/ to port 8080"
+
 # Request certificates
 echo "Requesting Let's Encrypt certificates..."
 docker-compose run --rm --entrypoint "\
