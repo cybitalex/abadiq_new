@@ -15,21 +15,23 @@ const Hero = () => {
     defaultMatches: true,
   });
   return (
-    <Grid container spacing={4} component="main" role="main">
+    <Grid container spacing={2} component="main" role="main">
       <Grid item container xs={12} md={6} alignItems={"center"}>
         <Box
           data-aos={isMd ? "fade-right" : "fade-up"}
           paddingLeft={isMd && 2}
-          p={1}
+          p={0}
           component="header"
         >
-          <Box marginBottom={2}>
+          <Box marginBottom={1}>
             <Typography
               variant="h1"
               color="text.primary"
               sx={{
                 fontWeight: 700,
                 fontSize: { xs: "2.2rem", md: "2.8rem" },
+                lineHeight: 1.2,
+                marginTop: 0,
               }}
             >
               Medical Billing <br />
@@ -67,7 +69,7 @@ const Hero = () => {
               Services
             </Typography>
           </Box>
-          <Box marginBottom={3}>
+          <Box marginBottom={2}>
             <Typography
               variant="h2"
               component="p"
@@ -75,7 +77,7 @@ const Hero = () => {
               sx={{
                 fontSize: { xs: "1.2rem", md: "1.35rem" },
                 maxWidth: "600px",
-                lineHeight: 1.6,
+                lineHeight: 1.4,
               }}
             >
               Transform your healthcare practice with our comprehensive medical
