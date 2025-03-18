@@ -82,20 +82,6 @@ const Hero = () => {
               stress.
             </Typography>
           </Box>
-          <Box>
-            <Typography
-              variant="h3"
-              component="p"
-              color="primary"
-              sx={{
-                fontSize: { xs: "1.3rem", md: "1.5rem" },
-                fontWeight: 600,
-                marginTop: 2,
-              }}
-            >
-              Call us: 718-208-4434
-            </Typography>
-          </Box>
         </Box>
       </Grid>
       <Grid
