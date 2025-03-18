@@ -29,6 +29,13 @@ if (fileContent.includes("let lines = message.split")) {
   console.log("✅ Patch applied successfully!");
 }
 
-// Run the original build script
-console.log("🏗️ Starting build process...");
-require("../scripts/build");
+// Run the npm build command instead of trying to require a specific build script
+console.log("🏗️ Starting build process with npm run build...");
+const { execSync } = require("child_process");
+try {
+  execSync("npm run build", { stdio: "inherit" });
+  console.log("✅ Build completed successfully!");
+} catch (error) {
+  console.error("❌ Build failed:", error.message);
+  process.exit(1);
+}

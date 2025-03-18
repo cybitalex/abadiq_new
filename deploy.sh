@@ -65,9 +65,16 @@ if (fileContent.includes('let lines = message.split')) {
   console.log('✅ Patch applied successfully!');
 }
 
-// Run the original build script
-console.log('🏗️ Starting build process...');
-require('../scripts/build');
+// Run the npm build command instead of trying to require a specific build script
+console.log('🏗️ Starting build process with npm run build...');
+const { execSync } = require('child_process');
+try {
+  execSync('npm run build', { stdio: 'inherit' });
+  console.log('✅ Build completed successfully!');
+} catch (error) {
+  console.error('❌ Build failed:', error.message);
+  process.exit(1);
+}
 EOF
   chmod +x custom-build.js
   echo "✅ Custom build script created!"
@@ -173,6 +180,9 @@ FROM node:16-alpine as build
 
 WORKDIR /app
 
+# Install build dependencies
+RUN apk add --no-cache python3 make g++
+
 # Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
@@ -189,7 +199,7 @@ ENV GENERATE_SOURCEMAP=false
 ENV NODE_ENV=production
 ENV CI=false
 
-# Use the custom build script instead of npm run build
+# Use the custom build script to patch and build
 RUN node custom-build.js
 
 # Production stage
