@@ -38,8 +38,9 @@ const Hero = () => {
                 component="span"
                 sx={{
                   display: "inline-block",
-                  width: "130px",
+                  width: { xs: "160px", md: "180px" },
                   height: "1.2em",
+                  marginRight: "8px",
                 }}
               >
                 <Typography
