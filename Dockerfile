@@ -14,7 +14,6 @@ COPY . .
 ENV GENERATE_SOURCEMAP=false
 ENV NODE_ENV=production
 ENV CI=false
-ENV NODE_OPTIONS=--openssl-legacy-provider
 
 # Build the app
 RUN npm run build

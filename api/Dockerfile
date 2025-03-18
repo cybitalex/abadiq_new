@@ -17,6 +17,7 @@ COPY ./api ./api
 # Set environment variables
 ENV NODE_ENV=production
 ENV API_PORT=3001
+# No NODE_OPTIONS setting needed for Node.js 16
 
 # Expose the port the app will run on
 EXPOSE 3001

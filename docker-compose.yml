@@ -23,7 +23,6 @@ services:
     environment:
       - NODE_ENV=production
       - API_PORT=3001
-      - NODE_OPTIONS=--openssl-legacy-provider
     volumes:
       - .:/app
       - /app/node_modules
