@@ -1,86 +1,132 @@
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import './Contact.css';
-import contactImg from '../../../Assets/contact.svg';
+import React, { useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import "./Contact.css";
+import contactImg from "../../../Assets/contact.svg";
 // import swal from 'sweetalert'
-import Fade from 'react-reveal/Fade';
+import Fade from "react-reveal/Fade";
 
 const Contact = () => {
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const formDataObj = Object.fromEntries(formData);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-        const emailData = {
-            to: [{
-                email: 'abby@abadiq.com', // Your receiving email
-                name: 'Abby Abad',
-            }],
-            sender: {
-                email: formDataObj['email'], // Sender's email from form
-                name: formDataObj['name'], // Sender's name from form
-            },
-            subject: formDataObj['subject'],
-            htmlContent: `<p>${formDataObj['message']}</p>`,
-        };
-        
-        try {
-            const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'api-key': process.env.REACT_APP_BREVO_API_KEY,
-                },
-                body: JSON.stringify(emailData),
-            });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    setErrorMessage("");
+    setSuccessMessage("");
 
-            if (response.ok) {
-                event.target.reset();
-                alert('Message sent successfully!');
-            } else {
-                alert('Failed to send message.');
-            }
-        } catch (error) {
-            alert('An error occurred. Please try again later.');
-        }
-    };
+    const formData = new FormData(event.target);
+    const formDataObj = Object.fromEntries(formData);
 
-    return (
-        <section id="contact">
-            <Col md={11} className="mx-auto">
-                <Row>
-                    <Col md={6}>
-                        <Fade duration={2000} left>
-                            <form onSubmit={handleSubmit} className="contactForm">
-                                <h4 className="miniTitle">CONTACT US</h4>
-                                <h5 className="sectionTitle">GET IN TOUCH</h5>
-                                <Row>
-                                    <Col md={12} lg={6}>
-                                        <input name="name" placeholder="Your Name" type="text" required />
-                                    </Col>
-                                    <Col md={12} lg={6}>
-                                        <input name="email" placeholder="Your Email" type="email" required />
-                                    </Col>
-                                    <Col md={12}>
-                                        <input name="subject" placeholder="Subject" type="text" required />
-                                    </Col>
-                                    <Col md={12}>
-                                        <textarea name="message" placeholder="Your Message..." required></textarea>
-                                    </Col>
-                                </Row>
-                                <button className="branBtn" type="submit">Submit Now</button>
-                            </form>
-                        </Fade>
-                    </Col>
-                    <Col md={6}>
-                        <Fade duration={2000} right>
-                            <img src={contactImg} alt="Contact Us" className="img-fluid" />
-                        </Fade>
-                    </Col>
-                </Row>
-            </Col>
-        </section>
-    );
+    try {
+      console.log("Sending email via API...");
+
+      // Use the server-side endpoint instead of calling Brevo directly
+      const response = await fetch("/api/brevo-contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formDataObj.name,
+          email: formDataObj.email,
+          subject: formDataObj.subject,
+          message: formDataObj.message,
+        }),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        console.log("Email sent successfully:", responseData);
+        event.target.reset();
+        setSuccessMessage(
+          "Message sent successfully! We will get back to you soon."
+        );
+      } else {
+        console.error("Failed to send email:", responseData);
+        setErrorMessage(
+          `Failed to send message: ${responseData.message || "Unknown error"}`
+        );
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setErrorMessage("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <section className="contact-section" id="contact">
+      <h1 className="text-center section-title">
+        <span className="primary-color">Contact</span> US
+      </h1>
+      <div className="container">
+        <Fade bottom duration={2000} distance="40px">
+          <div className="row contactContainer">
+            <div className="col-md-6 p-5">
+              <img src={contactImg} className="img-fluid" alt="Contact Us" />
+            </div>
+            <div className="col-md-6 p-5">
+              <form onSubmit={handleSubmit}>
+                {successMessage && (
+                  <div className="alert alert-success">{successMessage}</div>
+                )}
+                {errorMessage && (
+                  <div className="alert alert-danger">{errorMessage}</div>
+                )}
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    name="subject"
+                    placeholder="Subject"
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    className="form-control"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-primary px-4 py-2"
+                  disabled={loading}
+                >
+                  {loading ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+            </div>
+          </div>
+        </Fade>
+      </div>
+    </section>
+  );
 };
 
 export default Contact;
