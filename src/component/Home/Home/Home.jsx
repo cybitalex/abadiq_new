@@ -10,9 +10,9 @@ const Home = () => {
   return (
     <Box component="main">
       <Container
-        maxWidth="lg"
+        maxWidth={false}
+        disableGutters
         sx={{
-          px: { xs: 1, sm: 2, md: 3 },
           overflow: "hidden",
         }}
       >
