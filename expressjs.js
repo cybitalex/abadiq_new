@@ -104,8 +104,8 @@ app.post("/api/brevo-contact", async (req, res) => {
     const emailData = {
       to: [
         {
-          email: "abby@abadiq.com", // Replace with recipient email
-          name: "Abby Abad",
+          email: "info@abadiq.com", // Replace with recipient email
+          name: "ABADIQ",
         },
       ],
       sender: {
