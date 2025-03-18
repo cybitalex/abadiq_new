@@ -28,8 +28,8 @@ const Footer = () => {
         </Col>
       </Row>
       <p className="copyRight">
-        Copyright &copy; 2024 <span className="fHighlight">CyBit Networks</span>
-        . All rights reserved.
+        Copyright &copy; 2025 <span className="fHighlight">CyBit Devs</span>.
+        All rights reserved.
       </p>
     </section>
   );
