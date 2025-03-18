@@ -42,7 +42,7 @@ const NavBar = () => {
       }`}
       expand="lg"
     >
-      <Container fluid className="px-0">
+      <div className="content-wrapper d-flex justify-content-between w-100">
         <Navbar.Brand
           as={Link}
           to="/"
@@ -102,7 +102,7 @@ const NavBar = () => {
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
-      </Container>
+      </div>
     </Navbar>
   );
 };

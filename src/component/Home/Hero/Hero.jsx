@@ -22,8 +22,7 @@ const Hero = () => {
       role="main"
       sx={{
         mt: { xs: -1, md: -2 }, // Negative margin to reduce space from top
-        pl: 2, // Left padding
-        pr: 2, // Right padding
+        px: 0, // No padding since content-wrapper handles it
       }}
     >
       <Grid item container xs={12} md={6} alignItems={"center"}>

@@ -12,20 +12,22 @@ export const UserContext = createContext();
 const App = () => {
   return (
     <div className="app-wrapper">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<LoginModal />} />
-        <Route
-          path="/dashboard/*"
-          element={
-            <PrivateRoute redirectTo="/login">
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <div className="content-wrapper">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<LoginModal />} />
+          <Route
+            path="/dashboard/*"
+            element={
+              <PrivateRoute redirectTo="/login">
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </div>
   );
 };

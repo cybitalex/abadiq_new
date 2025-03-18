@@ -9,6 +9,12 @@
   overflow: hidden;
   padding-top: 20px;
 }
+
+/* Ensure header content stays within the content wrapper */
+.header-content {
+  width: 100%;
+}
+
 .titleArea {
   padding: 1rem;
 }
