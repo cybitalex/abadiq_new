@@ -10,6 +10,23 @@ import { useAppContext } from "../../../context";
 const NavBar = () => {
   const [isSticky, setSticky] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if viewport is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 992); // Bootstrap lg breakpoint
+    };
+
+    // Initial check
+    checkIfMobile();
+
+    // Add event listener
+    window.addEventListener("resize", checkIfMobile);
+
+    // Clean up
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -38,7 +55,11 @@ const NavBar = () => {
       expanded={expanded}
       onToggle={(expanded) => setExpanded(expanded)}
       className={`navbar navbar-expand-lg navbar-light ${
-        isSticky ? "navStyle" : "navDefault"
+        isSticky
+          ? isMobile
+            ? "navStyle"
+            : "navStyle navHidden" // Only fixed on mobile
+          : "navDefault"
       }`}
       expand="lg"
     >

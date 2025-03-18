@@ -4,6 +4,7 @@ import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Services from "../Services/Services";
+import ScrollToTop from "../../Shared/ScrollToTop/ScrollToTop";
 import { Box } from "@mui/material";
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Services />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </Box>
   );
 };
