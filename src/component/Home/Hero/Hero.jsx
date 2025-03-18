@@ -22,7 +22,7 @@ const Hero = () => {
       role="main"
       sx={{
         mt: { xs: -1, md: -2 }, // Negative margin to reduce space from top
-        px: 0, // No padding since content-wrapper handles it
+        width: "100%", // Ensure full width
       }}
     >
       <Grid item container xs={12} md={6} alignItems={"center"}>
@@ -40,6 +40,7 @@ const Hero = () => {
                 fontSize: { xs: "2.2rem", md: "2.8rem" },
                 lineHeight: 1.2,
                 marginTop: 0,
+                pl: { xs: 0, md: 0 },
               }}
             >
               Medical Billing <br />

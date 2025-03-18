@@ -1,3 +1,13 @@
+/* Remove default margin from body */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  min-width: 100%;
+  background-color: #f8f9fa; /* Light background color for the entire page */
+}
+
 .App {
   text-align: center;
 }
@@ -7,12 +17,16 @@
   max-width: 100%;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .content-wrapper {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1440px; /* Increased from 1280px */
   margin: 0 auto;
-  padding: 0 16px; /* Half inch padding */
+  padding: 0 24px; /* Slightly increased padding for content */
 }
 
 .App-logo {
