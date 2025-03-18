@@ -22,14 +22,14 @@ const Hero = () => {
       role="main"
       sx={{
         mt: { xs: -1, md: -2 }, // Negative margin to reduce space from top
-        px: { xs: 2, md: 4 }, // Add horizontal padding
+        px: { xs: 0, md: 0 }, // Remove additional padding since container has it
       }}
     >
       <Grid item container xs={12} md={6} alignItems={"center"}>
         <Box
           data-aos={isMd ? "fade-right" : "fade-up"}
-          paddingLeft={isMd ? 1 : 2}
-          paddingRight={isMd ? 1 : 2}
+          paddingLeft={0} // Reduce left padding
+          paddingRight={0} // Reduce right padding
           component="header"
           sx={{ width: "100%" }}
         >
@@ -42,6 +42,7 @@ const Hero = () => {
                 fontSize: { xs: "2.2rem", md: "2.8rem" },
                 lineHeight: 1.2,
                 marginTop: 0,
+                pl: { xs: 1, md: 0 }, // Small left padding on mobile only
               }}
             >
               Medical Billing <br />
