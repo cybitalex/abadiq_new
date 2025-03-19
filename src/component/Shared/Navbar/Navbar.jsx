@@ -63,7 +63,7 @@ const NavBar = () => {
       }`}
       expand="lg"
     >
-      <div className="content-wrapper d-flex justify-content-between w-100">
+      <div className="content-wrapper d-flex justify-content-between align-items-center w-100">
         <Navbar.Brand
           as={Link}
           to="/"

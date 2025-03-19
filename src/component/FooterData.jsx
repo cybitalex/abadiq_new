@@ -1,4 +1,8 @@
-import { faMobileAlt, faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMobileAlt,
+  faMapMarkedAlt,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 import { faBuffer } from "@fortawesome/free-brands-svg-icons";
 
 export const usefulLink = [
@@ -16,5 +20,18 @@ export const usefulLink = [
 
 export const footerInfo = [
   { icon: faBuffer, info1: "ABADIQ Medical Billing", id: 1 },
-  { icon: faMobileAlt, info1: "718-208-4434", info2: "info@abadiq.com", id: 2 },
+  {
+    icon: faMobileAlt,
+    info1: "718-208-4434",
+    link: "tel:7182084434",
+    linkTitle: "Call Us",
+    id: 2,
+  },
+  {
+    icon: faEnvelope,
+    info1: "info@abadiq.com",
+    link: "mailto:info@abadiq.com",
+    linkTitle: "Email Us",
+    id: 3,
+  },
 ];
