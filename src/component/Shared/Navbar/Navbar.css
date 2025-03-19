@@ -1,6 +1,6 @@
 .navStyle {
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
-  background: white;
+  background: #f5f2ff;
   position: fixed !important;
   width: 100%;
   z-index: 99 !important;
@@ -21,11 +21,12 @@
   transition: 0.5s !important;
   padding: 10px 0 !important;
   margin-bottom: 0;
+  background-color: #f5f2ff;
 }
 
 /* Fix for fullwidth mobile menu */
 .navbar-collapse {
-  background-color: white;
+  background-color: #f5f2ff;
   z-index: 100;
 }
 
@@ -93,13 +94,18 @@
   height: 24px;
 }
 
+.mainNav {
+  margin-right: 20px;
+}
+
 .mainNav .nav-link {
-  color: #070120 !important;
+  color: #472583 !important;
   margin: 0.3rem 1.2rem !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   transition: 0.3s;
   font-size: 1.1rem;
   font-family: "Poppins", sans-serif;
+  padding: 8px 16px !important;
 }
 .mainNav .nav-link:after {
   content: "";
@@ -157,7 +163,7 @@
   }
 
   .navDefault {
-    background: white;
+    background: #f5f2ff;
     padding: 0.3rem !important;
     width: 100%;
     z-index: 99 !important;

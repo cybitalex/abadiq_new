@@ -1,5 +1,5 @@
 .header {
-  background: #f8f9fa; /* Match the body background */
+  background: #f5f2ff; /* Updated to match navbar */
   height: auto;
   min-height: 60vh;
   background-image: url("../../../Assets/bg.png");
@@ -20,6 +20,8 @@
 /* Ensure header content stays within the content wrapper */
 .header-content {
   width: 100%;
+  padding-top: 30px; /* Add space between navbar and content */
+  margin-top: 20px; /* Additional spacing */
 }
 
 .titleArea {
@@ -74,6 +76,12 @@
     height: auto;
     min-height: 50vh;
   }
+
+  .header-content {
+    padding-top: 15px; /* Less padding on mobile */
+    margin-top: 10px;
+  }
+
   .headerTitle {
     margin-bottom: 10px;
     font-size: 40px;
