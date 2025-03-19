@@ -7,6 +7,8 @@
   transition: 0.5s !important;
   font-family: "Poppins", sans-serif;
   top: 0;
+  left: 0;
+  right: 0;
 }
 
 .navHidden {
@@ -19,6 +21,40 @@
   transition: 0.5s !important;
   padding: 10px 0 !important;
   margin-bottom: 0;
+}
+
+/* Fix for fullwidth mobile menu */
+.navbar-collapse {
+  background-color: white;
+  z-index: 100;
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-collapse .mainNav {
+    text-align: center;
+  }
+
+  .navbar-collapse .nav-link {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .navbar-collapse .nav-item:last-child .nav-link {
+    border-bottom: none;
+  }
+
+  .navbar-toggle {
+    margin-right: 0;
+  }
 }
 
 /* Scroll to top button */
@@ -116,6 +152,10 @@
 }
 
 @media (max-width: 981px) {
+  .content-wrapper {
+    padding: 0 15px;
+  }
+
   .navDefault {
     background: white;
     padding: 0.3rem !important;
@@ -125,24 +165,34 @@
     text-align: center;
     margin: 0;
   }
+
   .navStyle {
     text-align: center;
   }
+
   .logo {
-    height: 70px;
-    margin-bottom: 0.2rem;
+    height: 60px;
+    margin-bottom: 0;
+    top: 0;
   }
 
   .navBrn {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    padding-left: 0;
   }
 
   .company-text {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .brand-text-container {
     margin-left: 10px;
+  }
+
+  .navbar-toggler {
+    margin-right: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
   }
 }
 

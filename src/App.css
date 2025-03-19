@@ -3,8 +3,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  width: 100%;
-  min-width: 100%;
+  width: 100vw;
+  max-width: 100%;
   background-color: #f8f9fa; /* Light background color for the entire page */
 }
 
@@ -20,6 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .content-wrapper {
@@ -27,6 +28,12 @@ body {
   max-width: 1440px; /* Increased from 1280px */
   margin: 0 auto;
   padding: 0 24px; /* Slightly increased padding for content */
+}
+
+@media (max-width: 767px) {
+  .content-wrapper {
+    padding: 0 15px;
+  }
 }
 
 .App-logo {

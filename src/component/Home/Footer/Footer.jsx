@@ -38,7 +38,7 @@ const Footer = () => {
       <p className="copyRight">
         Copyright &copy; {currentYear}{" "}
         <span className="fHighlight" itemProp="copyrightHolder">
-          ABADIQ Medical Billing
+          CyBit Devs
         </span>
         . All rights reserved.{" "}
         <span className="d-none" itemProp="keywords">
